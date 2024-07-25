@@ -1,18 +1,18 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Navbar as BootstrapNavbar, Container, Nav } from 'react-bootstrap';
-import { Link } from 'react-bootstrap-icons';
 import Cart from '../Cart/Cart';
 
 function Navbar() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [openCart, setOpenCart] = useState(false)
+    const [openCart, setOpenCart] = useState(false);
 
     return (
         <BootstrapNavbar bg="primary" variant="dark" expand="lg">
             <Container>
-                <Link to="/"><Navbar.Brand href="#home">Toko Loak</Navbar.Brand></Link>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse id="basic-navbar-nav">
+                <Link to="/"><BootstrapNavbar.Brand href="#home">Toko Loak</BootstrapNavbar.Brand></Link>
+                <BootstrapNavbar.Toggle aria-controls="basic-navbar-nav" />
+                <BootstrapNavbar.Collapse id="basic-navbar-nav">
                     <Nav className="ms-auto">
                         {isLoggedIn && (
                             <>
@@ -22,10 +22,10 @@ function Navbar() {
                         )}
                         {!isLoggedIn && <Nav.Link onClick={() => setIsLoggedIn(true)}>Login</Nav.Link>}
                     </Nav>
-                </Navbar.Collapse>
+                </BootstrapNavbar.Collapse>
             </Container>
         </BootstrapNavbar>
-    )
+    );
 }
 
 export default Navbar;
