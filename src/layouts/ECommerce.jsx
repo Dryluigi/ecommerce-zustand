@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { Navbar, Container, Nav } from 'react-bootstrap';
-import { Cart } from 'react-bootstrap-icons';
 import { Link, Outlet } from 'react-router-dom';
+import Cart from '../components/Cart/Cart';
 
 const ECommerce = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [openCart, setOpenCart] = useState(false)
 
     return (
         <>
@@ -16,9 +17,7 @@ const ECommerce = () => {
                         <Nav className="ms-auto">
                             {isLoggedIn && (
                                 <>
-                                    <div className="me-2">
-                                        <Nav.Link><Cart size={20} /></Nav.Link>
-                                    </div>
+                                    <Cart open={openCart} onCartClick={() => setOpenCart(val => !val)} />
                                     <Nav.Link onClick={() => setIsLoggedIn(false)}>Logout</Nav.Link>
                                 </>
                             )}
